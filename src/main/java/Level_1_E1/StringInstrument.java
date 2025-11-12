@@ -5,6 +5,10 @@ public class StringInstrument extends Instrument {
         System.out.println("String Instrument is charging");
     }
 
+    public StringInstrument(String name, float price) {
+        super(name, price);
+    }
+
     @Override
     public void play() {
         System.out.println("A string instrument is playing: " + super.getName());
