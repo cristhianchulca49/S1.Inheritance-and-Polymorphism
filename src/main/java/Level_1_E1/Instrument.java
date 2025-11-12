@@ -1,0 +1,16 @@
+package Level_1_E1;
+
+public abstract class Instrument {
+    private String name;
+    private float price;
+
+    public String getName() {
+        return name;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public abstract void play();
+}
