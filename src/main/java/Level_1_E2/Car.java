@@ -8,4 +8,8 @@ public class Car {
     public Car(int power) {
         this.power = power;
     }
+
+    public static void brake() {
+        System.out.println("The car is braking...");
+    }
 }
