@@ -1,7 +1,11 @@
 package Level_1_E2;
 
 public class Car {
-    private static final String brand = "Mercedes Benz";
-    private static String model;
-    private final int power = 3500;
+    private static final String BRAND = "Mercedes Benz";
+    private static String model = "Es315";
+    private final int power;
+
+    public Car(int power) {
+        this.power = power;
+    }
 }
