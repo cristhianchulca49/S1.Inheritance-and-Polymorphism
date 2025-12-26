@@ -1,5 +1,4 @@
 package Level_3.Entities;
-
 import java.math.BigDecimal;
 
 public abstract class News {
@@ -8,9 +7,10 @@ public abstract class News {
     private int score;
     private BigDecimal price;
 
-    public News(String title, int score, BigDecimal price) {
+    public News(String title) {
         this.title = title;
-        this.score = score;
-        this.price = price;
     }
+
+    public abstract void calculatePrice();
+    public abstract void calculateScore();
 }
