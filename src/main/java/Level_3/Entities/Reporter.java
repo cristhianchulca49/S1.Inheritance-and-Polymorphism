@@ -6,9 +6,9 @@ import java.util.List;
 
 public class Reporter {
     private final String DNI;
-    private String name;
+    private final String name;
     private static BigDecimal salary = BigDecimal.valueOf(1500);
-    private List<News> reports = new ArrayList<>();
+    private final List<News> reports = new ArrayList<>();
 
     public Reporter(String DNI, String name) {
         this.DNI = DNI;
