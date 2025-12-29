@@ -1,6 +1,7 @@
 package Level_3.Service;
 
 import java.math.BigDecimal;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,5 +19,13 @@ public class TennisNewsService {
         scoreRules.put("Federer", 3);
         scoreRules.put("Nadal", 3);
         scoreRules.put("Djokovic", 3);
+    }
+
+    public static Map<String, BigDecimal> getPriceRules() {
+        return Collections.unmodifiableMap(priceRules);
+    }
+
+    public static Map<String, Integer> getScoreRules() {
+        return Collections.unmodifiableMap(scoreRules);
     }
 }
