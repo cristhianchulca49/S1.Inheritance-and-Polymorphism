@@ -3,13 +3,16 @@ package Level_3.Entities;
 import java.math.BigDecimal;
 
 public abstract class News {
-    private String title;
+    private final String title;
     private String description;
     protected int score;
     protected BigDecimal price;
 
     public News(String title) {
         this.title = title;
+        description = "";
+        score = 0;
+        price = BigDecimal.ZERO;
     }
 
     public String getTitle() {
