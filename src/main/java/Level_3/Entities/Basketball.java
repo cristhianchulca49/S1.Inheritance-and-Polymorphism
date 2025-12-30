@@ -16,7 +16,7 @@ public class Basketball extends News {
 
     @Override
     public void calculatePrice() {
-        super.price = BasketballNewsService.getBasePrice();
+        this.price = BasketballNewsService.getBasePrice();
 
         BasketballNewsService.getPriceRules().forEach((ruleKey, extraPrice) -> {
             if (ruleKey.equalsIgnoreCase(competition) || ruleKey.equalsIgnoreCase(club)) {
