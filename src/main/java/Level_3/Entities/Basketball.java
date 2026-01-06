@@ -2,13 +2,11 @@ package Level_3.Entities;
 
 import Level_3.Service.BasketballNewsService;
 
-import java.math.BigDecimal;
-
 public class Basketball extends News {
     private final String competition;
     private final String club;
 
-    public Basketball(String title, String competition, String club, String player) {
+    public Basketball(String title, String competition, String club) {
         super(title);
         this.competition = competition;
         this.club = club;
