@@ -7,14 +7,14 @@ import java.util.Collections;
 import java.util.List;
 
 public class ReporterServices {
-    static private final List<Reporter> REPORTERS = new ArrayList<>();
+    private final List<Reporter> REPORTERS = new ArrayList<>();
 
     public List<Reporter> getReporters() {
         return Collections.unmodifiableList(REPORTERS);
     }
 
 
-    static public Reporter findReporterByDni(String dni) {
+    public Reporter findReporterByDni(String dni) {
         for (Reporter reporter : REPORTERS) {
             if (reporter.getDni().equalsIgnoreCase(dni)) {
                 return reporter;
