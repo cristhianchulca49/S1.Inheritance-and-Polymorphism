@@ -18,9 +18,12 @@ public class Main {
                     break;
                 case "2":
                     menuUI.deleteReporter();
+                    break;
                 case "3":
                     menuUI.addNewsToReporter();
                     break;
+                case "4":
+                    menuUI.deleteNews();
                 case "0":
                     return;
             }
