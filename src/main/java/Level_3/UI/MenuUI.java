@@ -55,14 +55,19 @@ public class MenuUI {
         News news = NEWSDATA.get(option).createNews();
 
         if (!menuController.addNewsToReporter(dni, news)) {
-            System.out.println("Error, News not add2");
+            System.out.println("Error, Reporter not found or News is empty");
         }
-        System.out.println("Reporter Added");
+        System.out.println("News Added to Reporter");
     }
 
     public void deleteNews() {
         String dni = Input.readString("Enter the ID number of the reporter");
         String title = Input.readString("Enter the title of the news");
+        if(!menuController.deleteNews(dni, title)){
+            System.out.println("Error, Report or News Not Found");
+            return;
+        }
+        System.out.println("News Deleted");
 
     }
 }
