@@ -6,8 +6,7 @@ import Level_3.Entities.Reporter;
 import java.util.List;
 
 public class NewsServices {
-    public boolean addNewsToReporter(String dni, News news) {
-        Reporter reporter = ReporterServices.findReporterByDni(dni);
+    public boolean addNewsToReporter(Reporter reporter, News news) {
         if(reporter != null){
             reporter.addNews(news);
             return true;
@@ -15,8 +14,7 @@ public class NewsServices {
         return false;
     }
 
-    public List<News> listReporterNews(String dni){
-        Reporter reporter = ReporterServices.findReporterByDni(dni);
+    public List<News> listReporterNews(Reporter reporter){
         if(reporter != null){
            return reporter.getNewsList();
         }
