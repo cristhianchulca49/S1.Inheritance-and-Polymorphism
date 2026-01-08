@@ -27,6 +27,9 @@ public class Main {
                     break;
                 case "5":
                     menuUI.showNews();
+                    break;
+                case "6":
+                    menuUI.calculateNewsScore();
                 case "0":
                     return;
             }

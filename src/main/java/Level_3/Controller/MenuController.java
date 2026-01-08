@@ -8,51 +8,63 @@ import Level_3.Service.ReporterServices;
 import java.util.List;
 
 public class MenuController {
-    NewsServices newsServices = new NewsServices();
-    ReporterServices reporterServices = new ReporterServices();
+    private final NewsServices NEWSSERVICES = new NewsServices();
+    private final ReporterServices REPORTERSERVICES = new ReporterServices();
 
     public boolean createReporter(String dni, String name) {
-        if (reporterServices.findReporterByDni(dni) != null) {
+        if (REPORTERSERVICES.findReporterByDni(dni) != null) {
             return false;
         }
-        reporterServices.createAndAddReporter(dni, name);
+        REPORTERSERVICES.createAndAddReporter(dni, name);
         return true;
     }
 
     public boolean deleteReporter(String dni) {
-        Reporter reporterToDelete = reporterServices.findReporterByDni(dni);
+        Reporter reporterToDelete = REPORTERSERVICES.findReporterByDni(dni);
         if (reporterToDelete == null) {
             return false;
         }
-        reporterServices.deleteReporterByDni(reporterToDelete);
+        REPORTERSERVICES.deleteReporterByDni(reporterToDelete);
         return true;
     }
 
     public boolean addNewsToReporter(String dni, News news) {
-        Reporter reporter = reporterServices.findReporterByDni(dni);
+        Reporter reporter = REPORTERSERVICES.findReporterByDni(dni);
         if (reporter == null || news == null) {
             return false;
         }
-        newsServices.addNewsToReporter(reporter, news);
+        NEWSSERVICES.addNewsToReporter(reporter, news);
         return true;
     }
 
     public boolean deleteNews(String dni, String title) {
-        Reporter reporter = reporterServices.findReporterByDni(dni);
+        Reporter reporter = REPORTERSERVICES.findReporterByDni(dni);
         if (reporter == null) {
             return false;
         }
 
-        News news = newsServices.findNews(reporter, title);
+        News news = NEWSSERVICES.findNews(reporter, title);
         if (news == null) {
             return false;
         }
-        newsServices.deleteNews(reporter, news);
+        NEWSSERVICES.deleteNews(reporter, news);
         return true;
     }
 
     public List<News> showNews(String dni) {
-        Reporter reporter = reporterServices.findReporterByDni(dni);
-        return (reporter != null) ? newsServices.listReporterNews(reporter) : List.of();
+        Reporter reporter = REPORTERSERVICES.findReporterByDni(dni);
+        return (reporter != null) ? NEWSSERVICES.listReporterNews(reporter) : List.of();
+    }
+
+    public int calculateNewsScore(String dni, String name) {
+        Reporter reporter = REPORTERSERVICES.findReporterByDni(dni);
+        if(reporter == null) {
+            return -1;
+        }
+        News news = NEWSSERVICES.findNews(reporter, name);
+        if(news == null) {
+            return -1;
+        }
+        return NEWSSERVICES.calculateNewsScore(news);
     }
 }

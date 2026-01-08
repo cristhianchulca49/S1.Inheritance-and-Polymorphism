@@ -86,4 +86,18 @@ public class MenuUI {
             System.out.println(news.getTitle());
         }
     }
+
+    public void calculateNewsScore() {
+        String dni = Input.readString("Enter the ID number of the reporter");
+        String name = Input.readString("Enter the name of the reporter");
+        int score = menuController.calculateNewsScore(dni, name);
+        if (score == -1) {
+            System.out.println("Error, Report or News Not Found");
+            return;
+        }
+        System.out.println("News Score Calculated");
+        System.out.println(score);
+    }
+
+
 }

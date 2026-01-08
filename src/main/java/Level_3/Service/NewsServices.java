@@ -24,4 +24,9 @@ public class NewsServices {
     public List<News> listReporterNews(Reporter reporter) {
         return reporter.getNewsList();
     }
+
+    public int calculateNewsScore(News news) {
+        news.calculateScore();
+        return news.getScore();
+    }
 }
