@@ -4,6 +4,7 @@ import Level_3.Controller.MenuController;
 import Level_3.Entities.News;
 import Level_3.UI.NewsData.*;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,11 +43,9 @@ public class MenuUI {
     public void addNewsToReporter() {
         String dni = Input.readString("Enter the ID number of the reporter to whom the news will be added.");
         System.out.println("What kind of news do you want to add?");
-        System.out.println("1. Soccer");
-        System.out.println("2. Basketball");
-        System.out.println("3. Tennis");
-        System.out.println("4. F1");
-        System.out.println("5. Motorcycling");
+        NEWSDATA.forEach((key, value) -> {
+            System.out.println(key + ". " + value.getClass().getSimpleName().replace("Data", ""));
+        });
         String option = Input.readString("Choose an option");
 
         if (!NEWSDATA.containsKey(option)) {
@@ -89,9 +88,9 @@ public class MenuUI {
 
     public void calculateNewsScore() {
         String dni = Input.readString("Enter the ID number of the reporter");
-        String name = Input.readString("Enter the name of the reporter");
-        int score = menuController.calculateNewsScore(dni, name);
-        if (score == -1) {
+        String title = Input.readString("Enter the title of the news");
+        int score = menuController.calculateNewsScore(dni, title);
+        if (score == 0) {
             System.out.println("Error, Report or News Not Found");
             return;
         }
@@ -99,5 +98,14 @@ public class MenuUI {
         System.out.println(score);
     }
 
-
+    public void calculateNewsPrice() {
+        String dni = Input.readString("Enter the ID number of the reporter");
+        String title = Input.readString("Enter the title of the news");
+        BigDecimal price = menuController.calculateNewsPrice(dni, title);
+        if (price.compareTo(BigDecimal.ZERO) == 0) {
+            System.out.println("Error, Report or News Not Found");
+        }
+        System.out.println("News Price Calculated");
+        System.out.println(price);
+    }
 }

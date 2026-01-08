@@ -5,6 +5,7 @@ import Level_3.Entities.Reporter;
 import Level_3.Service.NewsServices;
 import Level_3.Service.ReporterServices;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class MenuController {
@@ -56,15 +57,27 @@ public class MenuController {
         return (reporter != null) ? NEWSSERVICES.listReporterNews(reporter) : List.of();
     }
 
-    public int calculateNewsScore(String dni, String name) {
+    public int calculateNewsScore(String dni, String title) {
         Reporter reporter = REPORTERSERVICES.findReporterByDni(dni);
         if(reporter == null) {
-            return -1;
+            return 0;
         }
-        News news = NEWSSERVICES.findNews(reporter, name);
+        News news = NEWSSERVICES.findNews(reporter, title);
         if(news == null) {
-            return -1;
+            return 0;
         }
         return NEWSSERVICES.calculateNewsScore(news);
+    }
+
+    public BigDecimal calculateNewsPrice(String dni, String title) {
+        Reporter reporter = REPORTERSERVICES.findReporterByDni(dni);
+        if(reporter == null) {
+            return BigDecimal.ZERO;
+        }
+        News news = NEWSSERVICES.findNews(reporter, title);
+        if(news == null) {
+            return BigDecimal.ZERO;
+        }
+        return NEWSSERVICES.calculateNewsPrice(news);
     }
 }

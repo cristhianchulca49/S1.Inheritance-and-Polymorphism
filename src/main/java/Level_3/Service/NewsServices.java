@@ -3,6 +3,7 @@ package Level_3.Service;
 import Level_3.Entities.News;
 import Level_3.Entities.Reporter;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class NewsServices {
@@ -28,5 +29,10 @@ public class NewsServices {
     public int calculateNewsScore(News news) {
         news.calculateScore();
         return news.getScore();
+    }
+
+    public BigDecimal calculateNewsPrice(News news) {
+        news.calculatePrice();
+        return news.getPrice();
     }
 }
