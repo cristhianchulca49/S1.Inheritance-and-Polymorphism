@@ -1,11 +1,12 @@
-package Level_3.UI.DataNews;
+package Level_3.UI.NewsData;
 
 import Level_3.Entities.News;
 import Level_3.Entities.Tennis;
 import Level_3.UI.Input;
 
-public class TennisData {
-    public News createTennisNews() {
+public class TennisData implements NewsData {
+
+    public News createNews() {
         String title = Input.readString("Enter the title of the news");
         String competitionName = Input.readString("Enter the name of the competition");
         String player1 = Input.readString("Enter the name of the player 1");
