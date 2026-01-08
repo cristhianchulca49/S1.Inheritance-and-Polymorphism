@@ -24,6 +24,9 @@ public class Main {
                     break;
                 case "4":
                     menuUI.deleteNews();
+                    break;
+                case "5":
+                    menuUI.showNews();
                 case "0":
                     return;
             }

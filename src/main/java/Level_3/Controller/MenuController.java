@@ -5,12 +5,14 @@ import Level_3.Entities.Reporter;
 import Level_3.Service.NewsServices;
 import Level_3.Service.ReporterServices;
 
+import java.util.List;
+
 public class MenuController {
     NewsServices newsServices = new NewsServices();
     ReporterServices reporterServices = new ReporterServices();
 
     public boolean createReporter(String dni, String name) {
-        if (reporterServices.findReporterByDni(dni) == null) {
+        if (reporterServices.findReporterByDni(dni) != null) {
             return false;
         }
         reporterServices.createAndAddReporter(dni, name);
@@ -47,5 +49,10 @@ public class MenuController {
         }
         newsServices.deleteNews(reporter, news);
         return true;
+    }
+
+    public List<News> showNews(String dni) {
+        Reporter reporter = reporterServices.findReporterByDni(dni);
+        return (reporter != null) ? newsServices.listReporterNews(reporter) : List.of();
     }
 }
