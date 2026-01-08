@@ -1,10 +1,9 @@
 package Level_3.Controller;
 
 import Level_3.Entities.News;
+import Level_3.Entities.Reporter;
 import Level_3.Service.NewsServices;
 import Level_3.Service.ReporterServices;
-
-import static Level_3.Service.FactoryNews.createNews;
 
 public class MenuController {
     NewsServices newsServices = new NewsServices();
@@ -18,9 +17,12 @@ public class MenuController {
         return reporterServices.deleteReporterByDni(dni);
     }
 
-    public boolean createNewsAndAddToReporter(String option, String title, String dni) {
-        News news = createNews(option, title);
-        return newsServices.addNewsToReporter(dni, news);
+    public boolean addNewsToReporter(String dni, News news) {
+        Reporter reporter = reporterServices.findReporterByDni(dni);
+        if (news == null || reporter == null) {
+            return false;
+        }
+        return newsServices.addNewsToReporter(reporter, news);
     }
 
 }
