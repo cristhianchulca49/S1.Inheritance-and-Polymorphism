@@ -6,18 +6,22 @@ import Level_3.Entities.Reporter;
 import java.util.List;
 
 public class NewsServices {
-    public boolean addNewsToReporter(Reporter reporter, News news) {
-        if(reporter != null){
-            reporter.addNews(news);
-            return true;
-        }
-        return false;
+    public void addNewsToReporter(Reporter reporter, News news) {
+        reporter.addNews(news);
     }
 
-    public List<News> listReporterNews(Reporter reporter){
-        if(reporter != null){
-           return reporter.getNewsList();
-        }
-        return null;
+    public News findNews(Reporter reporter, String title) {
+        return reporter.getNewsList().stream()
+                .filter(news -> news.getTitle().equalsIgnoreCase(title))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public void deleteNews(Reporter reporter, News news) {
+        reporter.getNewsList().remove(news);
+    }
+
+    public List<News> listReporterNews(Reporter reporter) {
+        return reporter.getNewsList();
     }
 }
